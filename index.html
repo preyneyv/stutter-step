@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stutter Step</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="game.js" defer></script>
+
+  <!-- GET DEM FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Nova+Mono|Lobster|Poppins:400,600,800&display=swap"
+        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="about.html">About</a>
+  <span>By <a target="_blank" href="https://github.com/preyneyv">@preyneyv</a></span>
+</nav>
+<main>
+  <article>
+    <h1 class="site-title">Stutter Step</h1>
+    <h3 class="hint">Attack to start.</h3>
+    <div id="timers">
+      <div>
+        <h3 class="timer-label">Lost</h3>
+        <div class="timer-display" id="timer-lost">0.00</div>
+      </div>
+      <div>
+        <h3 class="timer-label">Total</h3>
+        <div class="timer-display" id="timer-total">0.00</div>
+      </div>
+    </div>
+    <div id="time-slider-container">
+      <div id="time-slider-head">&#9662;</div>
+      <div id="time-slider-track">
+        <div id="time-slider-windup"></div>
+        <div id="time-slider-cooldown"></div>
+      </div>
+      <canvas width="600" height="4" id="time-slider-canvas"></canvas>
+      <div id="mode-indicator">
+        <i class="material-icons"></i>
+      </div>
+    </div>
+    <div id="attack-target"></div>
+  </article>
+  <section id="settings-container">
+    <h2 id="settings-header">Settings</h2>
+    <table class="settings-table">
+      <thead>
+      <tr>
+        <th colspan="2">
+          Keybinds
+          <span>
+            <i id="reset-keybinds" class="material-icons">settings_backup_restore</i>
+          </span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Move</td>
+        <td>
+          <div data-setting="moveBind" class="key-input">
+            <span class="label"></span>
+            <div class="key-input-button">
+              <i class="material-icons">edit</i>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Attack</td>
+        <td>
+          <div data-setting="attackBind" class="key-input">
+            <span class="label"></span>
+            <div class="key-input-button">
+              <i class="material-icons">edit</i>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="settings-table">
+      <thead>
+      <tr>
+        <th colspan="2">
+          Champion Stats
+          <span>
+            <i id="reset-stats" class="material-icons">settings_backup_restore</i>
+            <a href="about.html#champion-stats" target="_blank" class="material-icons">help</a>
+          </span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><label for="settings-base-as">Base AS</label></td>
+        <td>
+          <input name="baseAS" id="settings-base-as" step="0.01" min="0.6" type="number">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="settings-total-as">Total AS</label></td>
+        <td>
+          <input name="totalAS" id="settings-total-as" step="0.01" min="0.6" type="number">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="settings-windup">Windup</label></td>
+        <td>
+          <input name="windup" id="settings-windup" step="0.01" min="0" max="1" type="number">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="settings-windup-mod">Windup Mod</label></td>
+        <td>
+          <input name="windupMod" id="settings-windup-mod" step="0.01" min="0" max="1" type="number">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<div id="hints"></div>
+</body>
+</html>

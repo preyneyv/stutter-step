@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Stutter Step</title>
+  <!--  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>-->
+
+  <!-- GET DEM FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Nova+Mono|Lobster|Poppins:300,400,600,800&display=swap"
+        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html">Back</a>
+  <span>By <a target="_blank" href="https://github.com/preyneyv">@preyneyv</a></span>
+</nav>
+<main>
+  <article class="typography">
+    <h1 class="site-title">About</h1>
+    <p>Stutter Step is a boredom project to help me and others get better at
+      League of Legends. In particular, it aims to help improve your
+      kiting/orb-walking/stutter-stepping ability through letting you optimize
+      the amount of time spent attacking versus moving.</p>
+
+    <h2 id="settings">Settings</h2>
+    <p>This project has settings that you can configure to your taste.</p>
+    <h3 id="keybinds">Keybinds</h3>
+    <p>You're free to change the keybinds from their defaults to whatever it is
+      that you are comfortable with.</p>
+    <h3 id="champion-stats">Champion Stats</h3>
+    <p>Each champion comes with their own base attack speed, but also their own
+      windup time and windup modifier. You can get these numbers from the
+      Attack Speed table under the LoL Fandom page for that champion. For
+      instance, <a href="https://leagueoflegends.fandom.com/wiki/Ashe">Senna</a>'s
+      numbers are as follow.
+    </p>
+    <figure>
+      <img src="assets/senna.png" alt="Senna's Attack Speed">
+    </figure>
+    <p>You can use the following mapping to put the numbers in the right place.</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Fandom Table</th>
+        <th>E.g. Senna</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th>Base AS</th>
+        <td>
+          <i>Base AS</i> + Any level-based scaling. <br>
+          <i>e.g.</i> Jhin (0.625 &mdash; 0.944)
+        </td>
+        <td>0.625</td>
+      </tr>
+      <tr>
+        <th>Total AS</th>
+        <td>
+          Any number you'd like. This is the final AS after any scaling from
+          items. For Jhin, this would be the same as his Base AS, since he can't
+          build any AS whatsoever.
+        </td>
+        <td><i>any</i></td>
+      </tr>
+      <tr>
+        <th>Windup</th>
+        <td>
+          <i>Attack windup</i> as a decimal. 15% &rarr; 0.15
+        </td>
+        <td>0.34375</td>
+      </tr>
+      <tr>
+        <th>Windup Mod</th>
+        <td>
+          <i>Attack windup (mod.)</i> or 1 for champions that don't have
+          this value.
+        </td>
+        <td>0.6</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2 id="the-math">The Math</h2>
+    <p>Stutter Step implements the formulas that Riot uses to determine the
+      optimal attack-to-move ratio, and compares your actions against it,
+      calculating the "lost" time, i.e. time that could have been spent winding
+      up an attack or moving.</p>
+    <p>See <a target="blank" href="https://leagueoflegends.fandom.com/wiki/Basic_attack#Attack_speed">
+      this page</a> for the exact equation. It's much more convoluted than you'd
+      imagine.</p>
+    <pre>¯\_(ツ)_/¯</pre>
+
+    <h2 id="implementation">Implementation</h2>
+    <p>This application maintains two timers, total time and lost time. Total
+      time, predictably, is the amount of time since the start of the current
+      session. Lost time is the difference between the optimal ratio of
+      attack-to-movement and your achieved ratio.</p>
+    <p>It also charts a line beneath the optimal ratio that shows your achieved
+      ratio.</p>
+
+
+    <!--    asdf-->
+  </article>
+</main>
+</body>
